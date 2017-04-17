@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lee.springbootdemo.mapper.UserInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.lee.springbootdemo.model.UserInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="rolename" property="rolename" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="showname" property="showname" jdbcType="VARCHAR" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="channelid" property="channelid" jdbcType="INTEGER" />
+    <result column="thridparty" property="thridparty" jdbcType="VARCHAR" />
+    <result column="registertime" property="registertime" jdbcType="TIMESTAMP" />
+    <result column="lastlogintime" property="lastlogintime" jdbcType="TIMESTAMP" />
+    <result column="lastloginip" property="lastloginip" jdbcType="VARCHAR" />
+    <result column="extend_1" property="extend1" jdbcType="BIGINT" />
+    <result column="extend_2" property="extend2" jdbcType="VARCHAR" />
+    <result column="phonenumber" property="phonenumber" jdbcType="VARCHAR" />
+    <result column="isagency" property="isagency" jdbcType="INTEGER" />
+    <result column="isprotect" property="isprotect" jdbcType="INTEGER" />
+    <result column="headimgurl" property="headimgurl" jdbcType="VARCHAR" />
+    <result column="promoter" property="promoter" jdbcType="VARCHAR" />
+    <result column="promotetime" property="promotetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, rolename, username, showname, nickname, channelid, thridparty, registertime, 
+    lastlogintime, lastloginip, extend_1, extend_2, phonenumber, isagency, isprotect, 
+    headimgurl, promoter, promotetime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from userinfo
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from userinfo
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.lee.springbootdemo.model.UserInfo" >
+    insert into userinfo (id, rolename, username, 
+      showname, nickname, channelid, 
+      thridparty, registertime, lastlogintime, 
+      lastloginip, extend_1, extend_2, 
+      phonenumber, isagency, isprotect, 
+      headimgurl, promoter, promotetime
+      )
+    values (#{id,jdbcType=BIGINT}, #{rolename,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{showname,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{channelid,jdbcType=INTEGER}, 
+      #{thridparty,jdbcType=VARCHAR}, #{registertime,jdbcType=TIMESTAMP}, #{lastlogintime,jdbcType=TIMESTAMP}, 
+      #{lastloginip,jdbcType=VARCHAR}, #{extend1,jdbcType=BIGINT}, #{extend2,jdbcType=VARCHAR}, 
+      #{phonenumber,jdbcType=VARCHAR}, #{isagency,jdbcType=INTEGER}, #{isprotect,jdbcType=INTEGER}, 
+      #{headimgurl,jdbcType=VARCHAR}, #{promoter,jdbcType=VARCHAR}, #{promotetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lee.springbootdemo.model.UserInfo" >
+    insert into userinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="rolename != null" >
+        rolename,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="showname != null" >
+        showname,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="channelid != null" >
+        channelid,
+      </if>
+      <if test="thridparty != null" >
+        thridparty,
+      </if>
+      <if test="registertime != null" >
+        registertime,
+      </if>
+      <if test="lastlogintime != null" >
+        lastlogintime,
+      </if>
+      <if test="lastloginip != null" >
+        lastloginip,
+      </if>
+      <if test="extend1 != null" >
+        extend_1,
+      </if>
+      <if test="extend2 != null" >
+        extend_2,
+      </if>
+      <if test="phonenumber != null" >
+        phonenumber,
+      </if>
+      <if test="isagency != null" >
+        isagency,
+      </if>
+      <if test="isprotect != null" >
+        isprotect,
+      </if>
+      <if test="headimgurl != null" >
+        headimgurl,
+      </if>
+      <if test="promoter != null" >
+        promoter,
+      </if>
+      <if test="promotetime != null" >
+        promotetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="rolename != null" >
+        #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="showname != null" >
+        #{showname,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="channelid != null" >
+        #{channelid,jdbcType=INTEGER},
+      </if>
+      <if test="thridparty != null" >
+        #{thridparty,jdbcType=VARCHAR},
+      </if>
+      <if test="registertime != null" >
+        #{registertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastlogintime != null" >
+        #{lastlogintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastloginip != null" >
+        #{lastloginip,jdbcType=VARCHAR},
+      </if>
+      <if test="extend1 != null" >
+        #{extend1,jdbcType=BIGINT},
+      </if>
+      <if test="extend2 != null" >
+        #{extend2,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null" >
+        #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="isagency != null" >
+        #{isagency,jdbcType=INTEGER},
+      </if>
+      <if test="isprotect != null" >
+        #{isprotect,jdbcType=INTEGER},
+      </if>
+      <if test="headimgurl != null" >
+        #{headimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="promoter != null" >
+        #{promoter,jdbcType=VARCHAR},
+      </if>
+      <if test="promotetime != null" >
+        #{promotetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lee.springbootdemo.model.UserInfo" >
+    update userinfo
+    <set >
+      <if test="rolename != null" >
+        rolename = #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="showname != null" >
+        showname = #{showname,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="channelid != null" >
+        channelid = #{channelid,jdbcType=INTEGER},
+      </if>
+      <if test="thridparty != null" >
+        thridparty = #{thridparty,jdbcType=VARCHAR},
+      </if>
+      <if test="registertime != null" >
+        registertime = #{registertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastlogintime != null" >
+        lastlogintime = #{lastlogintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastloginip != null" >
+        lastloginip = #{lastloginip,jdbcType=VARCHAR},
+      </if>
+      <if test="extend1 != null" >
+        extend_1 = #{extend1,jdbcType=BIGINT},
+      </if>
+      <if test="extend2 != null" >
+        extend_2 = #{extend2,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null" >
+        phonenumber = #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="isagency != null" >
+        isagency = #{isagency,jdbcType=INTEGER},
+      </if>
+      <if test="isprotect != null" >
+        isprotect = #{isprotect,jdbcType=INTEGER},
+      </if>
+      <if test="headimgurl != null" >
+        headimgurl = #{headimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="promoter != null" >
+        promoter = #{promoter,jdbcType=VARCHAR},
+      </if>
+      <if test="promotetime != null" >
+        promotetime = #{promotetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lee.springbootdemo.model.UserInfo" >
+    update userinfo
+    set rolename = #{rolename,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      showname = #{showname,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      channelid = #{channelid,jdbcType=INTEGER},
+      thridparty = #{thridparty,jdbcType=VARCHAR},
+      registertime = #{registertime,jdbcType=TIMESTAMP},
+      lastlogintime = #{lastlogintime,jdbcType=TIMESTAMP},
+      lastloginip = #{lastloginip,jdbcType=VARCHAR},
+      extend_1 = #{extend1,jdbcType=BIGINT},
+      extend_2 = #{extend2,jdbcType=VARCHAR},
+      phonenumber = #{phonenumber,jdbcType=VARCHAR},
+      isagency = #{isagency,jdbcType=INTEGER},
+      isprotect = #{isprotect,jdbcType=INTEGER},
+      headimgurl = #{headimgurl,jdbcType=VARCHAR},
+      promoter = #{promoter,jdbcType=VARCHAR},
+      promotetime = #{promotetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
